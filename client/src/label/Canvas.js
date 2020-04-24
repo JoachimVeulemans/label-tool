@@ -20,7 +20,7 @@ class Canvas extends Component {
     super(props, context);
 
     this.state = {
-      zoom: -1,
+      zoom: -2,
       selectedFigureId: null,
       cursorPos: { lat: 0, lng: 0 },
     };

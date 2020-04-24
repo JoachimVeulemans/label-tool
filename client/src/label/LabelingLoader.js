@@ -19,6 +19,11 @@ export default class LabelingLoader extends Component {
 
   async fetch(...args) {
     const { projectId } = this.props.match.params;
+
+    if (projectId == null) {
+      projectId = '1';
+    }
+
     if (projectId === 'demo') {
       const path = typeof args[0] === 'string' ? args[0] : args[0].pathname;
       return demoMocks[path](...args);
