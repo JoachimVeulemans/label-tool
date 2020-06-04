@@ -24,6 +24,10 @@ export default class LabelingLoader extends Component {
       return demoMocks[path](...args);
     }
 
+    if (args[0].href != null && args[0].href.includes('undefined')) {
+      args[0].href = args[0].href.split('=')[0] + '=1';
+    }
+
     return await fetch(...args);
   }
 
@@ -52,6 +56,10 @@ export default class LabelingLoader extends Component {
       const a = document.createElement('a');
       a.setAttribute('href', '/api/getLabelingInfo');
       const url = new URL(a.href);
+
+      if (projectId === undefined) {
+        projectId = 1;
+      }
 
       url.searchParams.append('projectId', projectId);
       if (imageId) {

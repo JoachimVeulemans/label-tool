@@ -20,7 +20,7 @@ class Canvas extends Component {
     super(props, context);
 
     this.state = {
-      zoom: -1,
+      zoom: -2,
       selectedFigureId: null,
       cursorPos: { lat: 0, lng: 0 },
     };
@@ -45,7 +45,7 @@ class Canvas extends Component {
   getSelectedFigure() {
     const { selectedFigureId } = this.state;
     const { figures } = this.props;
-    return figures.find(f => f.id === selectedFigureId);
+    return figures.find((f) => f.id === selectedFigureId);
   }
 
   handleChange(eventType, { point, pos, figure, points }) {
@@ -169,7 +169,7 @@ class Canvas extends Component {
         })
       : null;
 
-    const getColor = f =>
+    const getColor = (f) =>
       f.tracingOptions && f.tracingOptions.enabled
         ? lighten(colorMapping[f.color], 80)
         : colorMapping[f.color];
@@ -190,7 +190,7 @@ class Canvas extends Component {
     const hotkeysDOM = (
       <Hotkeys
         keyName="backspace,del,c,f,-,=,left,right,up,down"
-        onKeyDown={key => {
+        onKeyDown={(key) => {
           const tagName = document.activeElement
             ? document.activeElement.tagName.toLowerCase()
             : null;
@@ -278,8 +278,8 @@ class Canvas extends Component {
           keyboard={false}
           attributionControl={false}
           onClick={this.handleClick}
-          onZoom={e => this.setState({ zoom: e.target.getZoom() })}
-          onMousemove={e => this.setState({ cursorPos: e.latlng })}
+          onZoom={(e) => this.setState({ zoom: e.target.getZoom() })}
+          onMousemove={(e) => this.setState({ cursorPos: e.latlng })}
           ref={this.mapRef}
         >
           <ZoomControl position="bottomright" />

@@ -29,14 +29,15 @@ class App extends Component {
     return (
       <Router>
         <Fragment>
-          <Route exact path="/" component={LabelHome} />
+          <Route exact path="/home" component={LabelHome} />
+          <Route exact path="/" component={LabelingLoader} />
           <Route path="/admin" component={AdminApp} />
           <Route path="/help" component={Help} />
           <Route exact path="/label/:projectId" component={LabelingLoader} />
           <Route
             exact
             path="/label/:projectId/:imageId"
-            render={props =>
+            render={(props) =>
               props.match.params.imageId === 'over' ? (
                 <OverScreen {...props} />
               ) : (
