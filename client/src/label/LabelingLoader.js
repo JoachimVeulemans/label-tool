@@ -24,7 +24,7 @@ export default class LabelingLoader extends Component {
       return demoMocks[path](...args);
     }
 
-    if (args[0].href.includes('undefined')) {
+    if (args[0].href != null && args[0].href.includes('undefined')) {
       args[0].href = args[0].href.split('=')[0] + '=1';
     }
 
